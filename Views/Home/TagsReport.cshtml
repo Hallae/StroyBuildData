@@ -1,0 +1,113 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tags Report</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tags Report</h2>
+    <div id="tableContainer"></div>
+    <script>
+        // Your JSON data
+        const data = {
+            "name": "tags-report",
+            "request": {
+                "distribution": "day",
+                "filters": {
+                    "from": "2024-01-01T02:00:00+02:00",
+                    "to": "2024-01-14T02:00:00+02:00",
+                    "groups": {
+                        "values": [1, 2, 3]
+                    }
+                }
+            },
+            "total": 10399,
+            "records": {
+                "2024-01-01": { "Adam": 13, "Alex": 26, "Chernozub.l": 15, "Close - in progress": 18 },
+                "2024-01-02": { "Adam": 5 },
+                "2024-01-03": { "Steven": 18, "Suhak I.": 8, "Support": 364, "TEST": 1, "Tesliuk P.": 41, "Tovkach S.": 8, "Tsos I.": 39, "Tymchuk O.": 32 },
+                "2024-01-04": { "Julian": 23, "Kopusyak V.": 41, "Kostiuchyk I.": 5, "Lily": 12, "Limit": 3, "Lishchuk O.": 40, "Lukomska D.": 18, "Mironov V.": 7 },
+                "2024-01-05": { "Max": 1, "Mia": 1 },
+                "2024-01-06": { "Kopusyak V.": 19, "Kostiuchyk I.": 15, "Liam": 1 },
+                "2024-01-07": { "Amelia": 35, "Andrew": 1, "VIP": 198, "Vasylieva D.": 20, "Veretelnyk M.": 6, "Verification": 17 },
+                "2024-01-08": { "Withdrawal - general info": 65, "Withdrawal issue": 21, "Yaremenko.Yu": 8, "Yevchuk L.": 17, "Zhyzhko V.": 13 },
+                "2024-01-09": { "Support": 364, "Tesliuk P.": 3, "Tomakh D.": 9, "Tsos I.": 24, "Tymchuk O.": 7, "VIP": 116 },
+                "2024-01-10": { "Alex": 34, "Amy": 5, "Babii B.": 11, "Badalian M.": 37, "Bidnenko I.": 34 },
+                "2024-01-11": { "Amy": 1, "Badalian M.": 37, "Bidnenko I.": 27, "Bondar.B": 1, "Bonus - general info": 28 },
+                "2024-01-12": { "Alex": 7, "Amy": 7, "Babii B.": 10, "Badalian M.": 55 },
+                "2024-01-13": { "Mia": 3, "Mironov V.": 13, "Morrrigan": 1, "NewVip": 1, "Nikitina.O": 8, "Reopen": 10, "Review Left": 1, "Review Requested": 1, "Rudkovskyi.O": 2 },
+                "2024-01-14": { "Bonus - general info": 4, "Casino Bonus": 25, "Close - in progress": 3, "Closed - PG/01": 1, "Closed - Personal Reason/03": 1, "Closure": 1 }
+            }
+        };
+
+        function convertToTable() {
+            const container = document.getElementById("tableContainer");
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+
+            // Create header cells
+            const headerCells = ["Date", "Tag", "Count"];
+            headerCells.forEach(headerText => {
+                const th = document.createElement("th");
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Create table body
+            const tbody = document.createElement("tbody");
+            Object.entries(data.records).forEach(([date, record]) => {
+                Object.entries(record).forEach(([tag, count]) => {
+                    const row = document.createElement("tr");
+                    const dateCell = document.createElement("td");
+                    dateCell.textContent = date;
+                    row.appendChild(dateCell);
+
+                    const tagCell = document.createElement("td");
+                    tagCell.textContent = tag;
+                    row.appendChild(tagCell);
+
+                    const countCell = document.createElement("td");
+                    countCell.textContent = count;
+                    row.appendChild(countCell);
+
+                    tbody.appendChild(row);
+                });
+            });
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+
+        // Call the function to convert JSON to table
+        convertToTable();
+    </script>
+</body>
+</html>

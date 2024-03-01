@@ -32,7 +32,12 @@ namespace StroyBuild.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Responsetime()
+        {
+            return View();
+        }
+
+        public IActionResult TagsReport()
         {
             return View();
         }
