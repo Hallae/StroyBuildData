@@ -1,0 +1,115 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duration Report</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Duration Report</h2>
+    <div id="tableContainer"></div>
+    <script>
+        //  JSON data
+        const data = {
+            "name": "duration-report",
+            "request": {
+                "distribution": "day",
+                "filters": {
+                    "from": "2024-01-01T02:00:00+02:00",
+                    "to": "2024-01-14T02:00:00+02:00",
+                    "groups": {
+                        "values": [1, 2, 3]
+                    }
+                }
+            },
+            "total": 10399,
+            "records": {
+                "2024-01-01": { "agents_chatting_duration": 407, "count": 760, "duration": 590 },
+                "2024-01-02": { "agents_chatting_duration": 394, "count": 819, "duration": 560 },
+                "2024-01-03": { "agents_chatting_duration": 396, "count": 815, "duration": 556 },
+                "2024-01-04": { "agents_chatting_duration": 444, "count": 806, "duration": 593 },
+                "2024-01-05": { "agents_chatting_duration": 420, "count": 721, "duration": 565 },
+                "2024-01-06": { "agents_chatting_duration": 381, "count": 735, "duration": 531 },
+                "2024-01-07": { "agents_chatting_duration": 385, "count": 742, "duration": 556 },
+                "2024-01-08": { "agents_chatting_duration": 461, "count": 839, "duration": 633 },
+                "2024-01-09": { "agents_chatting_duration": 470, "count": 766, "duration": 629 },
+                "2024-01-10": { "agents_chatting_duration": 385, "count": 752, "duration": 532 },
+                "2024-01-11": { "agents_chatting_duration": 438, "count": 807, "duration": 591 },
+                "2024-01-12": { "agents_chatting_duration": 388, "count": 866, "duration": 528 },
+                "2024-01-13": { "agents_chatting_duration": 456, "count": 895, "duration": 612 },
+                "2024-01-14": { "agents_chatting_duration": 410, "count": 76, "duration": 535 }
+            }
+        };
+
+        function convertToTable() {
+            const container = document.getElementById("tableContainer");
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+
+            // Create header cells
+            const headerCells = ["Date", "Agents Chatting Duration", "Count", "Duration"];
+            headerCells.forEach(headerText => {
+                const th = document.createElement("th");
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Create table body
+            const tbody = document.createElement("tbody");
+            Object.entries(data.records).forEach(([date, record]) => {
+                const row = document.createElement("tr");
+                const dateCell = document.createElement("td");
+                dateCell.textContent = date;
+                row.appendChild(dateCell);
+
+                const agentsChattingDurationCell = document.createElement("td");
+                agentsChattingDurationCell.textContent = record.agents_chatting_duration;
+                row.appendChild(agentsChattingDurationCell);
+
+                const countCell = document.createElement("td");
+                countCell.textContent = record.count;
+                row.appendChild(countCell);
+
+                const durationCell = document.createElement("td");
+                durationCell.textContent = record.duration;
+                row.appendChild(durationCell);
+
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+
+        // Call the function to convert JSON to table
+        convertToTable();
+    </script>
+</body>
+</html>

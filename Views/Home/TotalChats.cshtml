@@ -1,0 +1,121 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Total Chats Report</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        /* Headers */
+        th:nth-child(odd) {
+            background-color: blue;
+            color: white;
+        }
+
+        th:nth-child(even) {
+            background-color: yellow;
+            color: black;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            color: black;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+
+        tr:nth-child(even) {
+            background-color: #D6EEEE;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h2>Total Chats Report</h2>
+    <div id="tableContainer"></div>
+    <script>
+        //  JSON data
+        const data = {
+            "name": "total-chats-report",
+            "request": {
+                "distribution": "day",
+                "filters": {
+                    "from": "2024-01-01T02:00:00+02:00",
+                    "to": "2024-01-14T02:00:00+02:00",
+                    "groups": {
+                        "values": [1, 2, 3]
+                    }
+                }
+            },
+            "total": 10399,
+            "records": {
+                "2024-01-01": { "total": 760 },
+                "2024-01-02": { "total": 819 },
+                "2024-01-03": { "total": 815 },
+                "2024-01-04": { "total": 806 },
+                "2024-01-05": { "total": 721 },
+                "2024-01-06": { "total": 735 },
+                "2024-01-07": { "total": 742 },
+                "2024-01-08": { "total": 839 },
+                "2024-01-09": { "total": 766 },
+                "2024-01-10": { "total": 752 },
+                "2024-01-11": { "total": 807 },
+                "2024-01-12": { "total": 866 },
+                "2024-01-13": { "total": 895 },
+                "2024-01-14": { "total": 76 }
+            }
+        };
+
+        function convertToTable() {
+            const container = document.getElementById("tableContainer");
+            const table = document.createElement("table");
+            const thead = document.createElement("thead");
+            const headerRow = document.createElement("tr");
+
+            // Create header cells
+            const headerCells = ["Date", "Total Chats"];
+            headerCells.forEach(headerText => {
+                const th = document.createElement("th");
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            // Create table body
+            const tbody = document.createElement("tbody");
+            Object.entries(data.records).forEach(([date, record]) => {
+                const row = document.createElement("tr");
+                const dateCell = document.createElement("td");
+                dateCell.textContent = date;
+                row.appendChild(dateCell);
+
+                const totalCell = document.createElement("td");
+                totalCell.textContent = record.total;
+                row.appendChild(totalCell);
+
+                tbody.appendChild(row);
+            });
+            table.appendChild(tbody);
+            container.appendChild(table);
+        }
+
+        // Call the function to convert JSON to table
+        convertToTable();
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿/* Custom Navbar Styles */
+.navbar {
+    background-color: #343a40; /* Darker background for a more elegant look */
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #f8f9fa; /* Light text for better contrast */
+}
+
+.navbar .nav-link:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.navbar .navbar-toggler {
+    border-color: #f8f9fa; /* Make toggler match the navbar links */
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
