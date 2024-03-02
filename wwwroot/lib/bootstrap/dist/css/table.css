@@ -1,0 +1,45 @@
+﻿table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    border-radius: 20px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensures the border-radius is applied to the container as well */
+}
+
+th:first-child, td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+th:last-child, td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Headers */
+th:nth-child(odd) {
+    background-color: #40E0D0;
+    color: white;
+}
+
+th:nth-child(even) {
+    background-color: #00CED1;
+    color: black;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: black;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+tr:nth-child(even) {
+    background-color: #D6EEEE;
+}
