@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/StroyBuild.styles.css" asp-append-version="true" />
-    
-
 </head>
 <body>
     <header>
@@ -21,24 +19,20 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                       
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="TotalChats">Total Chats Reports</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Duration">Duration</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Ratings">Ratings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Responsetime">ResponseTime</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="TagsReport">TagsReport</a>
-                        </li>
-                    </ul>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Project UMA
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="TotalChats">Total Chats Reports</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Duration">Duration</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Ratings">Ratings</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Responsetime">ResponseTime</a></li>
+                            <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="TagsReport">TagsReport</a></li>
+                        </ul>
+                    </div>
+                    <!-- End of Dropdown Menu -->
                 </div>
             </div>
         </nav>
@@ -49,11 +43,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - StroyBuild - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

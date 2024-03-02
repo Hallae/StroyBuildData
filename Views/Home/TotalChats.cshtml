@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    
 }
 
 <!DOCTYPE html>
@@ -9,19 +10,33 @@
 <head>
     <title>Total Chats Report</title>
     <style>
-        table {
+    table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin: 20px 0;
+            border-radius: 20px; /* Rounded corners for the table */
+            overflow: hidden; /* Ensures the border-radius is applied to the container as well */
         }
+
+        th:first-child, td:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        th:last-child, td:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
         /* Headers */
         th:nth-child(odd) {
-            background-color: blue;
+            background-color: #40E0D0;
             color: white;
         }
 
         th:nth-child(even) {
-            background-color: yellow;
+            background-color: #00CED1;
             color: black;
         }
 
@@ -41,14 +56,13 @@
             background-color: #D6EEEE;
         }
 
+</style>
 
-    </style>
 </head>
 <body>
     <h2>Total Chats Report</h2>
     <div id="tableContainer"></div>
     <script>
-        //  JSON data
         const data = {
             "name": "total-chats-report",
             "request": {
@@ -79,7 +93,6 @@
                 "2024-01-14": { "total": 76 }
             }
         };
-
         function convertToTable() {
             const container = document.getElementById("tableContainer");
             const table = document.createElement("table");
@@ -117,5 +130,6 @@
         // Call the function to convert JSON to table
         convertToTable();
     </script>
+    
 </body>
 </html>
